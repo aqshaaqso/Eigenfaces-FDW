@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Face Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🎥 Real-Time Face Detection</h1>
+        <p>Detect faces in real-time using your webcam!</p>
+    </header>
+    <main>
+        <div class="video-container">
+            <img src="/video_feed" alt="Video Feed">
+        </div>
+    </main>
+    <footer>
+        <p>Powered by OpenCV and Flask</p>
+    </footer>
+</body>
+</html>
