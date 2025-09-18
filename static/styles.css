@@ -4,7 +4,6 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to bottom, #1e3c72, #2a5298);
-    /* Smooth gradient background */
     color: #fff;
     text-align: center;
 }
@@ -12,7 +11,6 @@ body {
 header {
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.7);
-    /* Semi-transparent header */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -20,13 +18,11 @@ header h1 {
     font-size: 2.5rem;
     margin: 0;
     color: #ffd700;
-    /* Gold-colored heading */
 }
 
 header p {
     font-size: 1rem;
     color: #ccc;
-    /* Lighter text for description */
 }
 
 main {
@@ -35,100 +31,89 @@ main {
     justify-content: center;
     align-items: center;
     min-height: 70vh;
-    /* Adjusted for spacing from footer */
     margin-bottom: 80px;
-    /* Space between content and footer */
 }
 
 .video-container {
     width: 640px;
-    /* Default webcam resolution width */
-    height: 480px;
-    /* Default webcam resolution height */
+    height: auto; /* Ubah tinggi agar menyesuaikan konten */
     border: 5px solid rgba(255, 255, 255, 0.2);
-    /* Light border */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    /* Shadow for depth */
     border-radius: 10px;
-    /* Rounded corners */
     overflow: hidden;
-    /* Hide anything outside the container */
     background: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background */
     margin-bottom: 20px;
+    display: flex; /* Tambahkan flexbox */
+    flex-direction: column; /* Atur arah kolom agar tombol di bawah */
+    align-items: center; /* Pusatkan konten secara horizontal */
+    padding: 10px; /* Tambahkan padding untuk ruang di dalam container */
 }
 
 img {
     width: 100%;
-    height: 100%;
+    height: auto; /* Sesuaikan tinggi gambar */
     object-fit: cover;
-    /* Ensures the image fills the container while maintaining aspect ratio */
+    margin-bottom: 10px; /* Tambahkan jarak antara gambar dan tombol */
 }
 
-/* Toggle Switch Styles */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin-top: 20px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
+/* Button Styles */
+button {
+    margin-top: 10px;
+    margin-bottom: 10px; /* Tambahkan margin bawah untuk jarak antar elemen */
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    /* Default background color (OFF) */
-    transition: 0.4s;
-    border-radius: 50px;
+    transition: background-color 0.3s ease;
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    border-radius: 50px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
+button:hover {
+    background-color: #0056b3;
 }
 
-/* When checked (ON) */
-input:checked+.slider {
-    background-color: #28a745;
-    /* Green background when ON */
+/* Photo Container Styles */
+.photo-container {
+    width: 640px;
+    margin-top: 20px;
+    text-align: center;
 }
 
-input:checked+.slider:before {
-    transform: translateX(26px);
-    /* Slide the button to the right */
+.photo-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
-/* Hover effect */
-.slider:hover {
-    background-color: red;
-    /* Lighter yellow when hovered */
+.photo-container img {
+    width: 100%;
+    height: auto;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    display: none; /* Initially hidden */
 }
 
+/* Snapshot Result Styles */
+#snapshotResult {
+    width: 320px; /* Atur lebar sesuai ukuran frame deteksi */
+    height: 240px; /* Atur tinggi sesuai ukuran frame deteksi */
+    object-fit: cover; /* Pastikan gambar menyesuaikan ukuran frame */
+    border: 5px solid rgba(255, 255, 255, 0.2); /* Tambahkan border agar konsisten */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Tambahkan efek bayangan */
+    border-radius: 10px; /* Tambahkan border radius agar lebih estetis */
+    display: none; /* Tetap disembunyikan hingga snapshot diambil */
+    margin: 10px auto; /* Pusatkan gambar dan tambahkan margin */
+}
+
+/* Footer Styles */
 footer {
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.8);
-    /* Footer with a dark transparent background */
     font-size: 0.9rem;
     color: #aaa;
-    /* Lighter footer text */
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -143,29 +128,23 @@ footer p {
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
-        /* Smaller heading on mobile */
     }
 
     header p {
         font-size: 0.9rem;
-        /* Smaller description text */
     }
 
     .video-container {
         width: 90%;
-        /* Make the video container responsive to screen size */
         height: auto;
-        /* Let the height adjust based on width */
     }
 
-    .switch {
-        width: 50px;
-        /* Smaller switch on mobile */
-        height: 30px;
+    .photo-container {
+        width: 90%;
     }
 
-    .slider:before {
-        width: 22px;
-        height: 22px;
+    button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
     }
 }

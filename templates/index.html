@@ -3,27 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-Time Face Detection</title>
+    <title>YA ALLAH BISAAAAA</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
-        <h1>🎥 Real-Time Face Detection</h1>
-        <p>Detect faces in real-time using your webcam!</p>
+        <h1>🎥 YA ALLAH BISAAAAA</h1>
+        <p>BISMILLAHIRROHMANIRROHIM</p>
     </header>
     <main>
         <div class="video-container">
-            <img id="videoFeed" src="/video_feed" alt="Video Feed">
+            <h2>Original Video with Face Detection</h2>
+            <img id="videoFeed" src="{{ url_for('video_feed') }}" alt="Video Feed">
+            <button onclick="takeSnapshot('snapshot_original')">Take Snapshot</button>
         </div>
-        <label class="switch">
-            <input type="checkbox" id="toggleCameraSwitch">
-            <span class="slider"></span>
-        </label>
+        <div class="photo-container">
+            <h2>Snapshot Result</h2>
+            <img id="snapshotResult" src="" alt="Snapshot Result" style="display: none;">
+        </div>
     </main>
     <footer>
-        <p>Powered by OpenCV and Flask | Designed with ❤️</p>
     </footer>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        function takeSnapshot(endpoint) {
+            console.log(`Sending request to /${endpoint}`); // Log the endpoint being called
+            fetch(`/${endpoint}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    console.log('Snapshot response received:', response); // Log the response
+                    return response.blob();
+                })
+                .then(blob => {
+                    const snapshotImage = document.getElementById('snapshotResult');
+                    snapshotImage.src = URL.createObjectURL(blob);
+                    snapshotImage.style.display = 'block';
+                    console.log('Snapshot displayed successfully'); // Log success
+                })
+                .catch(error => console.error('Error taking snapshot:', error));
+        }
+    </script>
 </body>
 </html>
